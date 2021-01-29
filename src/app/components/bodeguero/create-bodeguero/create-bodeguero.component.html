@@ -1,0 +1,121 @@
+<app-header></app-header>
+<div class="container mt-3">
+    <div class="raw">
+        <div class="col-7 m-auto">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4><strong>{{settings.title}}</strong></h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formValues" (ngSubmit)="onForm()">
+                        <div class="form-group">
+                            <label for="inputState">Estado</label>
+                            <select formControlName="state" id="inputState" class="form-control col-md-4" required>
+                                <option selected>Choose...</option>
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cedula">Cédula</label>
+                            <input formControlName="id"
+                                [ngClass]="{'is-invalid': (formValues.get('id')?.errors || !settings.isValidCode) && formValues.get('id')?.dirty}"
+                                [readonly]='!settings.new' maxlength="10" type="text" name="cedula" id="cedula"
+                                class="form-control" placeholder="Inserte la cédula" (keyup)="checkCode($event)">
+                            <div *ngIf="formValues.get('id')?.errors && formValues.get('id')?.dirty"
+                                class="invalid-feedback">La cédula es obligatorio debe tener 10 caracteres
+                            </div>
+                            <div *ngIf="settings.isValidCode == false" class="invalid-feedback">La cédula ya
+                                esta en
+                                uso</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre_b">Nombre</label>
+                            <input formControlName="name"
+                                [ngClass]="{'is-invalid': (formValues.get('name')?.errors || !settings.isValidCode) && formValues.get('name')?.dirty}"
+                                type="text" name="nombre_b" id="nombre_b" class="form-control"
+                                placeholder="Inserte el nombre">
+                            <div *ngIf="formValues.get('name')?.errors && formValues.get('name')?.dirty"
+                                class="invalid-feedback">El nombre es obligatorio
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido_b">Apellido</label>
+                            <input formControlName="lastname"
+                                [ngClass]="{'is-invalid': (formValues.get('lastname')?.errors || !settings.isValidCode) && formValues.get('lastname')?.dirty}"
+                                type="text" name="apellido_b" id="apellido" class="form-control"
+                                placeholder="Inserte el apellido">
+                            <div *ngIf="formValues.get('lastname')?.errors && formValues.get('lastname')?.dirty"
+                                class="invalid-feedback">El apellido es obligatorio
+                            </div>
+                        </div>
+                        <div *ngIf="settings.new" class="form-group">
+                            <label for="pass_b">Contraseña</label>
+                            <input formControlName="password"
+                                [ngClass]="{'is-invalid': (formValues.get('password')?.errors || !settings.isValidCode) && formValues.get('password')?.dirty}"
+                                type="text" name="pass_b" id="pass_b" class="form-control"
+                                placeholder="Inserte la contraseña">
+                            <div *ngIf="formValues.get('password')?.errors && formValues.get('password')?.dirty"
+                                class="invalid-feedback">La contraseña es obligatorio
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="telefono">Teléfono</label>
+                                <input formControlName="phone"
+                                    [ngClass]="{'is-invalid': (formValues.get('phone')?.errors || !settings.isValidCode) && formValues.get('phone')?.dirty}"
+                                    type="text" name="telefono_b" id="telefono_b" class="form-control"
+                                    placeholder="Inserte el teléfono">
+                                <div *ngIf="formValues.get('phone')?.errors && formValues.get('phone')?.dirty"
+                                    class="invalid-feedback">El teléfono es obligatorio
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="nacimiento_b">Nacimiento</label>
+                                <input formControlName="birthdate"
+                                    [ngClass]="{'is-invalid': (formValues.get('birthdate')?.errors || !settings.isValidCode) && formValues.get('birthdate')?.dirty}"
+                                    type="date" name="nacimiento_b" id="nacimiento_b" class="form-control"
+                                    placeholder="Inserte la fecha de nacimiento">
+                                <div *ngIf="formValues.get('birthdate')?.errors && formValues.get('birthdate')?.dirty"
+                                    class="invalid-feedback">La fecha de nacimiento es obligatorio
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email_b">Email</label>
+                            <input formControlName="email"
+                                [ngClass]="{'is-invalid': (formValues.get('email')?.errors || !settings.isValidCode) && formValues.get('email')?.dirty}"
+                                type="email" name="email_b" id="email_b" class="form-control"
+                                placeholder="Inserte el email">
+                            <div *ngIf="formValues.get('email')?.errors && formValues.get('email')?.dirty"
+                                class="invalid-feedback">El email es obligatorio debe ser válido
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion_b">Dirección</label>
+                            <input formControlName="address"
+                                [ngClass]="{'is-invalid': (formValues.get('address')?.errors || !settings.isValidCode) && formValues.get('address')?.dirty}"
+                                type="text" name="direccion_b" id="direccion_b" class="form-control"
+                                placeholder="Inserte la dirección">
+                            <div *ngIf="formValues.get('address')?.errors && formValues.get('address')?.dirty"
+                                class="invalid-feedback">La dirección es obligatoria
+                            </div>
+                        </div>
+                        <div class="form-grup d-flex justify-content-center">
+                            <button class="btn btn-primary px-5"
+                                [disabled]="formValues.invalid || !settings.isValidCode || settings.isSave"><i
+                                    class="fas fa-plus-circle mr-2"></i>{{settings.action}}</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

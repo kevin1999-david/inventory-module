@@ -1,0 +1,106 @@
+<app-header></app-header>
+<div class="container mt-3">
+    <div class="raw">
+        <div class="col-7 m-auto">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4><strong>{{settings.title}}</strong> </h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formValues" (ngSubmit)="onForm()" novalidate>
+                        <div class="form-group">
+                            <label for="id"><strong>Código:</strong></label>
+                            <input formControlName="id"
+                                [ngClass]="{'is-invalid': (formValues.get('id')?.errors || !settings.isValidCode) && formValues.get('id')?.dirty}"
+                                [readonly]='!settings.new' type="text" name="id" id="id" class="form-control"
+                                maxlength="8" placeholder="Inserte el código: Ex: PRO-RTT0" (keyup)="checkCode($event)">
+                            <div *ngIf="formValues.get('id')?.errors && formValues.get('id')?.dirty"
+                                class="invalid-feedback">El id del producto es obligatorio debe tener 8 caracteres</div>
+                            <div *ngIf="settings.isValidCode == false" class="invalid-feedback">El id del producto ya
+                                esta en
+                                uso</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre"><strong>Nombre:</strong> </label>
+                            <input formControlName="name"
+                                [ngClass]="{'is-invalid': formValues.get('name')?.errors && formValues.get('name')?.dirty}"
+                                type="text" name="nombre" id="nombre" class="form-control"
+                                placeholder="Inserte el nombre">
+                            <div *ngIf="formValues.get('name')?.errors && formValues.get('name')?.dirty"
+                                class="invalid-feedback">El nombre del producto es obligatorio</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description"><strong>Descripción:</strong></label>
+                            <input formControlName="description"
+                                [ngClass]="{'is-invalid': formValues.get('description')?.errors && formValues.get('description')?.dirty}"
+                                type="text" name="description" id="description" class="form-control"
+                                placeholder="Inserte la descripción">
+                            <div *ngIf="formValues.get('description')?.errors && formValues.get('description')?.dirty"
+                                class="invalid-feedback">La descripción del producto es obligatorio</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="costo"><strong>Costo:</strong></label>
+                                <input formControlName="cost"
+                                    [ngClass]="{'is-invalid': formValues.get('cost')?.errors && formValues.get('cost')?.dirty}"
+                                    type="number" step="0.05" min="0" name="costo" id="costo" class="form-control"
+                                    placeholder="Inserte el costo de compra">
+                                <div *ngIf="formValues.get('cost')?.errors && formValues.get('cost')?.dirty"
+                                    class="invalid-feedback">El costo del producto debe ser válido</div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="precio"><strong>Precio:</strong></label>
+                                <input formControlName="price"
+                                    [ngClass]="{'is-invalid': formValues.get('price')?.errors && formValues.get('price')?.dirty}"
+                                    type="number" step="0.05" min="0" name="precio" id="precio" class="form-control"
+                                    placeholder="Inserte el precio de venta (PVP)">
+                                <div *ngIf="formValues.get('price')?.errors && formValues.get('price')?.dirty"
+                                    class="invalid-feedback">El precio del producto debe ser válido</div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="inputState"><strong>Estado:</strong> </label>
+                                <select formControlName="state" id="inputState" class="form-control" required>
+                                    <option selected>Choose...</option>
+                                    <option value="true">Activo</option>
+                                    <option value="false">Inactivo</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="IVA"><strong>IVA:</strong> </label>
+                                <select formControlName="iva" id="IVA" class="form-control" required>
+                                    <option selected>Choose...</option>
+                                    <option value="true">Aplica</option>
+                                    <option value="false">No aplica</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre"><strong>Imagen:</strong></label>
+                            <textarea formControlName="image"
+                                [ngClass]="{'is-invalid': formValues.get('image')?.errors && formValues.get('image')?.dirty}"
+                                name="image" id="image" class="form-control" placeholder="Inserte la URL de la imagen">>
+                                </textarea>
+                            <div *ngIf="formValues.get('image')?.errors && formValues.get('image')?.dirty"
+                                class="invalid-feedback">La URL debe ser válida</div>
+                        </div>
+                        <!-- [disabled]="formValues.invalid" -->
+                        <div class="form-grup d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary px-5"
+                                [disabled]="formValues.invalid || !settings.isValidCode || settings.isSave"><i
+                                    class="fas fa-plus-circle mr-2"></i>{{settings.action}}</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="container">
+    <h1 class="mt-2"> <strong>INICIO</strong></h1>
+    <div class="row mt-5 d-flex justify-content-center">
+        <div *ngIf="isAdmin === 'ADMIN'" class="col-md-4 card-group">
+
+            <div class="card">
+                <div class="card-header h4 text-center">
+                    <strong>Bodegueros</strong>
+                </div>
+                <img class="card-img-top mx-auto mt-3" style="width: 100px; height: 100px;"
+                    src="https://image.flaticon.com/icons/png/512/1462/1462456.png" alt="Card image cap">
+                <div class="card-body">
+                    <p class="text-align"><strong>Cree, actualize, elimine o vea reportes de los usuarios
+                            bodegueros</strong> </p>
+                </div>
+                <div class="card-footer">
+                    <a [routerLink]="['/bodegueros']" class="btn btn-primary btn-block"> <strong>Ingresar</strong></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 card-group">
+            <div class="card">
+                <div class="card-header h4 text-center">
+                    <strong>Productos</strong>
+                </div>
+                <img class="card-img-top mx-auto mt-3" style="width: 100px; height: 100px;"
+                    src="https://i.pinimg.com/originals/c5/12/e1/c512e1cba1b6867fca63d6889b69fde3.png"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <p class="text-align"><strong>Cree, actualize y vea reportes de los productos incluyendo su
+                            stock y todos sus movimientos</strong> </p>
+                </div>
+                <div class="card-footer">
+                    <a [routerLink]="['/productos']" class="btn btn-primary btn-block"><strong>Ingresar</strong></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 card-group">
+            <div class="card">
+                <div class="card-header h4 text-center">
+                    <strong>Ajustes</strong>
+                </div>
+                <img class="card-img-top mx-auto mt-3" style="width: 100px; height: 100px;"
+                    src="https://image.flaticon.com/icons/png/512/2117/2117014.png" alt="Card image cap">
+                <div class="card-body">
+                    <p class="text-align"><strong>Cree, actualize y vea reportes de los ajustes realizados a los
+                            productos</strong> </p>
+                </div>
+                <div class="card-footer">
+                    <a [routerLink]="['/ajustes']" class="btn btn-primary btn-block"><strong>Ingresar</strong></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

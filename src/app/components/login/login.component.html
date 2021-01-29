@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6 m-auto">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4> <strong>ACCESO MÓDULO INVENTARIO</strong> </h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <img class="mx-auto mt-1" src="https://www.micmex.com.mx/images_msp/iconos/lin.png" alt="">
+                    </div>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                        <div class="form-group">
+                            <label for="">Usuario</label>
+                            <!-- <input type="text" formControlName="id" class="form-control"
+                                placeholder="Inserte su usuario (cédula)" aria-describedby="helpId"> -->
+
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping"><i
+                                            class="fa fa-user bigicon"></i></span>
+                                </div>
+                                <input type="text" formControlName="id" id="id" class="form-control"
+                                    placeholder="Inserte su id (cédula)" aria-label="Username"
+                                    aria-describedby="addon-wrapping">
+                              
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Contraseña</label>
+                            <!-- <input type="password" formControlName="password" class="form-control"
+                                placeholder="Inserte su contraseña" aria-describedby="helpId"> -->
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping"><i
+                                            class="fa fa-key bigicon"></i></span>
+                                </div>
+                                <input type="password" formControlName="password" class="form-control"
+                                    placeholder="Inserte su contraseña" aria-label="Username"
+                                    aria-describedby="addon-wrapping" required minlength="4">
+                            </div>
+                        </div>
+
+
+
+                        <button class="btn btn-primary btn-block"><i class="fa fa-sign-in mr-2"
+                                aria-hidden="true"></i>Acceder</button>
+                    </form>
+
+                </div>
+                <div class="card-footer text-muted">
+                    ERP SYSTEM
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6 mb-2">
+            <h2> <strong>LISTADO DE BODEGUEROS</strong></h2>
+        </div>
+        <div class="col-6 text-right">
+            <a class="btn btn-danger mx-1" (click)="generatePDF()" title="Generar pdf de bodegueros"><i class="fa fa-print mr-1"
+                    aria-hidden="true"></i>Reporte</a>
+            <a [routerLink]="['/bodeguero-new']" title="Añadir nuevo bodeguero" class="btn btn-success mx-1"><i
+                    class="fas fa-plus mx-1"></i>Añadir</a>
+        </div>
+        <div class="col">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="text-center">Cédula</th>
+                        <th scope="col" class="text-center">Nombre</th>
+                        <th scope="col" class="text-center">Nacimiento</th>
+                        <th scope="col" class="text-center">Dirección</th>
+                        <th scope="col" class="text-center">Email</th>
+                        <th scope="col" class="text-center">Teléfono</th>
+                        <th scope="col" class="text-center">Estado</th>
+                        <th scope="col" class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bod of bodegeuros;">
+                        <th scope="row" class="text-center">{{bod.id}}</th>
+                        <td class="text-center">{{bod.name +' '+bod.lastname}}</td>
+                        <td class="text-center">{{formatDate(bod.birthdate)}}</td>
+                        <td class="text-center">{{bod.address}}</td>
+                        <td class="text-center">{{bod.email}}</td>
+                        <td class="text-center">{{bod.phone}}</td>
+                        <td class="text-center">{{bod.state}}</td>
+                        <td class="text-center">
+                            <button (click)="setInfoUpdate(bod.id)" title="Cambiar contraseña"
+                                class="btn btn-warning btn-sm mr-1" data-toggle="modal" data-target="#exampleModal"><i
+                                    class="fas fa-wrench fa-lg"></i>
+                            </button>
+                            <a [routerLink]="['/bodeguero-edit', bod.id]" title="Actualizar bodeguero"
+                                class="btn btn-primary btn-sm"><i class="fas fa-pen-alt fa-lg"></i></a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Cambiar Contraseña</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="passc">Contraseña nueva</label>
+                                <input type="text" name="passc" id="passc" class="form-control"
+                                    placeholder="Inserte una nueva contraseña" [(ngModel)]="settingsUpdate.newPass">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" (click)="update()" data-dismiss="modal"
+                                class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
