@@ -1,6 +1,8 @@
-# ClientInventory
+# Inventory Module devolped by Kevin Catucuamba for the 'Aplicaciones Distribuidas' Subject UTN 2021
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+
 
 ## Development server
 
