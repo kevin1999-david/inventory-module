@@ -3,6 +3,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
+## Characteristics
+- Bootstrap 4
+- RxJS
+- API REST with JsonWebToken for the login
+- Angular 11
+
+## System View
+
+![Inventory!](/assets/1.PNG "Login")
+![Inventory!](/assets/2.PNG "Main")
+![Inventory!](/assets/3.PNG "Products")
+![Inventory!](/assets/4.PNG "Products")
+![Inventory!](/assets/5.PNG "Products")
+
 
 ## Development server
 
